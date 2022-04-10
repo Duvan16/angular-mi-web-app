@@ -13,6 +13,7 @@ import { RegistrarComponent } from './seguridad/registrar/registrar.component';
 import { LoginComponent } from './seguridad/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MaterialModule } from './material.module';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
   providers: [LibrosService],
   bootstrap: [AppComponent],
