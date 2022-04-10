@@ -14,6 +14,8 @@ import { LoginComponent } from './seguridad/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BarraComponent } from './navegacion/barra/barra.component';
+import { MenuListaComponent } from './navegacion/menu-lista/menu-lista.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     InicioComponent,
     RegistrarComponent,
     LoginComponent,
+    BarraComponent,
+    MenuListaComponent,
   ],
   imports: [
     BrowserModule,
