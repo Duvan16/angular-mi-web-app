@@ -34,4 +34,8 @@ export class BarraComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.usuarioSubscription?.unsubscribe();
   }
+
+  terminarSesion() {
+    this.seguridadServicio.salirSesion();
+  }
 }
