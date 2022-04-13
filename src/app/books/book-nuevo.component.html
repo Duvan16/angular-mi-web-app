@@ -26,6 +26,11 @@
                         <mat-option value="3">John Ortiz</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field style="width: 100%;">
+                    <input matInput placeholder="Seleccione Fecha Publicación" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
             </form>
         </mat-card>
     </section>
