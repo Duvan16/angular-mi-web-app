@@ -22,7 +22,7 @@ export class BooksComponent implements OnInit, AfterViewInit {
   constructor(private booksService: BooksService, private dialog: MatDialog) {}
 
   abrirDialog() {
-    this.dialog.open(BookNuevoComponent);
+    this.dialog.open(BookNuevoComponent, { width: '350px' });
   }
 
   hacerFiltro(filtro: any) {

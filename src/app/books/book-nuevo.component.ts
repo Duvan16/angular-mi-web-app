@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-book-nuevo',
-  template: `
-    <h1>Dialogo para agregar libro</h1>
-    <mat-dialog-actions>
-      <button mat-button [mat-dialog-close]="true">Cerrar</button>
-    </mat-dialog-actions>
-  `,
+  templateUrl: 'book-nuevo.component.html',
 })
-export class BookNuevoComponent {}
+export class BookNuevoComponent {
+  selectAutor: string;
+  guardarLibro(form: NgForm) {}
+}
