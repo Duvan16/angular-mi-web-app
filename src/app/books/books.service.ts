@@ -1,4 +1,6 @@
 import { Books } from './books.model';
+import { Subject } from 'rxjs';
+
 export class BooksService {
   private booksLista: Books[] = [
     {
@@ -31,7 +33,14 @@ export class BooksService {
     },
   ];
 
+  bookSubject = new Subject<Books>();
+
   obtenerLibros() {
     return this.booksLista.slice();
+  }
+
+  guarLibro(book: Books) {
+    this.booksLista.push(book);
+    this.bookSubject.next(book);
   }
 }
