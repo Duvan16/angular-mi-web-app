@@ -22,6 +22,7 @@ import { BooksService } from './books/books.service';
 import { BookNuevoComponent } from './books/book-nuevo.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { AutoresComponent } from './autores/autores.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AutoresComponent } from './autores/autores.component';
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
+    HttpClientModule,
   ],
   providers: [
     LibrosService,
