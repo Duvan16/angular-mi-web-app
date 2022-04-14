@@ -51,7 +51,6 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     LibrosService,
     SeguridadService,
-    BooksService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' },
   ],
   bootstrap: [AppComponent],
