@@ -21,6 +21,7 @@ import { PaginationBooks } from './pagination-books.model';
   styleUrls: ['./books.component.css'],
 })
 export class BooksComponent implements OnInit, AfterViewInit, OnDestroy {
+  timeout: any = null;
   bookData: Books[] = [];
   desplegarColumnas = ['titulo', 'descripcion', 'autor', 'precio'];
   dataSource = new MatTableDataSource<Books>();
@@ -38,7 +39,7 @@ export class BooksComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private booksService: BooksService, private dialog: MatDialog) {}
 
-  eventoPaginador(event: PageEvent) {
+  eventoPaginador(event: PageEvent): void {
     this.librosPorPagina = event.pageSize;
     this.paginaActual = event.pageIndex + 1;
     this.booksService.obtenerLibros(
@@ -50,7 +51,7 @@ export class BooksComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  ordenarColumna(event: any) {
+  ordenarColumna(event: any): void {
     this.sort = event.active;
     this.sortDirection = event.direction;
 
@@ -77,8 +78,27 @@ export class BooksComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  hacerFiltro(filtro: any) {
-    this.dataSource.filter = filtro.target.value;
+  hacerFiltro(event: any): void {
+    clearTimeout(this.timeout);
+    const $this = this;
+    this.timeout = setTimeout(() => {
+      if (event.keyCode !== 13) {
+        const filterValueLocal = {
+          propiedad: 'titulo',
+          valor: event.target.value,
+        };
+
+        $this.filterValue = filterValueLocal;
+
+        $this.booksService.obtenerLibros(
+          $this.librosPorPagina,
+          $this.paginaActual,
+          $this.sort,
+          $this.sortDirection,
+          filterValueLocal
+        );
+      }
+    }, 1000);
   }
 
   ngOnInit(): void {
