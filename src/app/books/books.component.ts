@@ -50,8 +50,31 @@ export class BooksComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
+  ordenarColumna(event: any) {
+    this.sort = event.active;
+    this.sortDirection = event.direction;
+
+    this.booksService.obtenerLibros(
+      this.librosPorPagina,
+      this.paginaActual,
+      event.active,
+      event.direction,
+      this.filterValue
+    );
+  }
+
   abrirDialog() {
-    this.dialog.open(BookNuevoComponent, { width: '350px' });
+    const dialogRef = this.dialog.open(BookNuevoComponent, { width: '350px' });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.booksService.obtenerLibros(
+        this.librosPorPagina,
+        this.paginaActual,
+        this.sort,
+        this.sortDirection,
+        this.filterValue
+      );
+    });
   }
 
   hacerFiltro(filtro: any) {

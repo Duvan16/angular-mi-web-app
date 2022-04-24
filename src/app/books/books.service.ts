@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class BooksService {
   baseUrl = environment.baseUrl;
   private booksLista: Books[] = [];
-  bookSubject = new Subject<Books>();
+  bookSubject = new Subject();
   bookPagination!: PaginationBooks;
   bookPaginationSubject = new Subject<PaginationBooks>();
 
@@ -45,7 +45,12 @@ export class BooksService {
   }
 
   guarLibro(book: Books) {
-    this.booksLista.push(book);
-    this.bookSubject.next(book);
+    this.http.post(this.baseUrl + 'api/Libro', book).subscribe((response) => {
+      this.bookSubject.next(book);
+    });
+  }
+
+  guardarLibroListener() {
+    return this.bookSubject.asObservable();
   }
 }
